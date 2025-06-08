@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fondo negro */
+            color: #fff; /* Texto blanco para mejor visibilidad */
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #35424a;
+            color: white;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            overflow: hidden;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #cccccc;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #35424a;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #333; /* Fondo gris oscuro para filas pares */
+        }
+        .btn {
+            display: inline-block;
+            background: #e8491d;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 15px;
+            margin: 5px 2px;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #35424a;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .card {
+            background: #1a1a1a; /* Fondo gris oscuro para las tarjetas */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            color: #fff; /* Texto blanco */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Sistema</span> de Ventas</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Ventas</a></li>
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Usuarios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sección de Productos -->
+        <div class="card">
+            <h2>Productos</h2>
+            <a href="#" class="btn">Agregar Producto</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>7501086801046</td>
+                        <td>PAPA JONES</td>
+                        <td>100</td>
+                        <td>5</td>
+                        <td>LACTEOS</td>
+                        <td>
+                            <a href="#" class="btn">Editar</a>
+                            <a href="#" class="btn">Eliminar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>83838</td>
+                        <td>PAPAS</td>
+                        <td>68</td>
+                        <td>8</td>
+                        <td>DULCES</td>
+                        <td>
+                            <a href="#" class="btn">Editar</a>
+                            <a href="#" class="btn">Eliminar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>8883</td>
+                        <td>PEPSI</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>REFRESCOS</td>
+                        <td>
+                            <a href="#" class="btn">Editar</a>
+                            <a href="#" class="btn">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sección de Ventas -->
+        <div class="card">
+            <h2>Ventas Recientes</h2>
+            <a href="#" class="btn">Nueva Venta</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Folio</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0014</td>
+                        <td>2025-03-24 14:17:36</td>
+                        <td>JUANITA</td>
+                        <td>100</td>
+                        <td>Cancelada</td>
+                        <td>
+                            <a href="#" class="btn">Detalles</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0011</td>
+                        <td>2025-03-21 20:00:00</td>
+                        <td>VENTA DE MOSTRADOR</td>
+                        <td>100</td>
+                        <td>Completada</td>
+                        <td>
+                            <a href="#" class="btn">Detalles</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0010</td>
+                        <td>2025-03-21 00:00:00</td>
+                        <td>JUANITA</td>
+                        <td>68</td>
+                        <td>Completada</td>
+                        <td>
+                            <a href="#" class="btn">Detalles</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Formulario de ejemplo para agregar producto -->
+        <div class="card">
+            <h2>Agregar Producto</h2>
+            <form>
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Seleccione una categoría</option>
+                        <option value="1">LACTEOS</option>
+                        <option value="2">DULCES</option>
+                        <option value="3">REFRESCOS</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Guardar Producto</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

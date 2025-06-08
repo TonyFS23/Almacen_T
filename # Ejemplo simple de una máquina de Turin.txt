@@ -1,0 +1,20 @@
+
+tape = list("1011")
+head = len(tape) - 1  
+state = "q0"
+
+while True:
+    if state == "q0":
+        if tape[head] == "1":
+            tape[head] = "0"
+            head -= 1
+        elif tape[head] == "0":
+            tape[head] = "1"
+            state = "halt"
+        else:  
+            tape.insert(0, "1")
+            state = "halt"
+    if state == "halt":
+        break
+
+print("".join(tape)) 

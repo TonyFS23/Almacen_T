@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacen T</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <style>
+        body {
+            font-family: Georgia, sans-serif;
+            background-image: url('fibra.avif');
+            background-size: 100%;
+            background-position: top left;
+            background-repeat: repeat;
+            margin: 0;
+            padding: 0;
+            color: rgb(94, 19, 19);
+            text-align: center;
+        }
+        .container {
+            background-color: rgba(224, 10, 10, 0.1);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            max-width: 1200px;
+            margin: auto;
+        }
+        @keyframes glow {
+            0% {
+                filter: brightness(1);
+                text-shadow: 0 0 10px rgba(128, 0, 128, 0.5), 0 0 20px rgba(128, 0, 128, 0.5);
+            }
+            50% {
+                filter: brightness(2);
+                text-shadow: 0 0 20px rgba(128, 0, 128, 0.7), 0 0 40px rgba(128, 0, 128, 0.7);
+            }
+            100% {
+                filter: brightness(1);
+                text-shadow: 0 0 10px rgba(128, 0, 128, 0.5), 0 0 20px rgba(128, 0, 128, 0.5);
+            }
+        }
+        h1 {
+            color: #542660;
+            animation: glow 1.5s infinite;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+            gap: 20px; /* Espaciado entre botones */
+            justify-items: center; /* Alineación horizontal */
+            align-items: center; /* Alineación vertical */
+        }
+        .menu button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Alinear contenido a la izquierda */
+            height: 100px; /* Reducir la altura */
+            font-size: 1.5em; /* Ajustar el tamaño del texto */
+            padding: 0 20px; /* Espaciado interno */
+            color: #ffffff; /* Texto blanco */
+            cursor: pointer;
+            transition: background 0.3s, width 0.3s, transform 0.3s, box-shadow 0.3s;
+            background-color: #3c2546; /* Fondo gris oscuro */
+            border: none;
+            width: 80px; /* Ancho inicial */
+            overflow: hidden;
+            white-space: nowrap;
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Sombra suave */
+        }
+        .menu button span {
+            margin-right: 10px;
+            flex-shrink: 0; /* Evitar que el icono se reduzca */
+        }
+        .menu button p {
+            opacity: 0;
+            margin: 0;
+            transition: opacity 0.3s;
+            display: none; /* Ocultar texto en estado estático */
+            flex-grow: 1; /* Permitir que el texto ocupe espacio disponible */
+        }
+        .menu button:hover {
+            background: #ff6600; /* Cambiar a naranja al pasar el puntero */
+            color: #000000; /* Cambiar texto a negro */
+            width: 300px; /* Aumentar el ancho */
+            transform: scale(1.1); /* Ampliar ligeramente */
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.8); /* Sombra más intensa */
+        }
+        .menu button:hover p {
+            opacity: 1;
+            display: inline; /* Mostrar texto al pasar el puntero */
+        }
+        .support-button {
+            position: fixed; /* Fijar el botón en la esquina inferior derecha */
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 60px; /* Altura del botón */
+            font-size: 1.2em; /* Tamaño del texto */
+            padding: 0 20px;
+            color: #000000;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            background-color: #3c2546; /* Fondo gris oscuro */
+            border: none;
+            width: 60px; /* Ancho inicial */
+            overflow: hidden;
+            white-space: nowrap;
+            border-radius: 30px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Sombra suave */
+        }
+        .support-button span {
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .support-button p {
+            opacity: 0;
+            margin: 0;
+            transition: opacity 0.3s;
+            display: none;
+            flex-grow: 1;
+        }
+        .support-button:hover {
+            background: #ff6600; /* Cambiar a naranja al pasar el puntero */
+            color: #000000; /* Cambiar texto a negro */
+            width: 300px; /* Aumentar el ancho */
+            transform: scale(1.1); /* Ampliar ligeramente */
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.8); /* Sombra más intensa */
+        }
+        .support-button:hover p {
+            opacity: 1;
+            display: inline; /* Mostrar texto al pasar el puntero */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="dragon blanco.png" alt="Descripción de la imagen" style="max-width: 250%; height: auto;">
+        <h1>Almacen T</h1>
+        <nav class="menu">
+            <button class="button" onclick="confirmNavigation('pagina1.2.php')">
+                <span>👤</span>
+                <p>Usuarios</p>
+            </button>
+            <button class="button" onclick="confirmNavigation('pagina2.2.php')">
+                <span>📦</span>
+                <p>Mercancías</p>
+            </button>
+            <button class="button" onclick="confirmNavigation('pagina3.2.php')">
+                <span>📝</span>
+                <p>Pedidos</p>
+            </button>
+            <button class="button" onclick="confirmNavigation('pagina4.2.php')">
+                <span>⚙️</span>
+                <p>Actividades</p>
+            </button>
+            <button class="button" onclick="confirmNavigation('pagina5.2.php')">
+                <span>🚚</span>
+                <p>Proveedores</p>
+            </button>
+            <button class="button" onclick="confirmNavigation('pagina6.2.php')">
+                <span>📤</span>
+                <p>Embarque</p>
+            </button>
+            <button class="button" onclick="confirmNavigation('venta1.2.php')">
+                <span>🛒</span>
+                <p>Venta</p>
+            </button>
+            <button class="button" onclick="confirmNavigation('loginT.html')">
+                <span>🚪</span>
+                <p>Salir</p>
+            </button>
+        </nav>
+    </div>
+    <button class="support-button" onclick="showSupportInfo()">
+        <span>ℹ️</span>
+        <p>Soporte</p>
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        function confirmNavigation(url) {
+            alertify.confirm("Ingresando a la pagina?",
+            function(){
+                alertify.success('Navegando...');
+                window.location.href = url;
+            },
+            function(){
+                alertify.error('Cancelado');
+            });
+        }
+
+        function showSupportInfo() {
+            alertify.alert()
+                .setting({
+                    title: "Información de Soporte",
+                    message: "<div style='color: red; background-color: black; padding: 20px; border-radius: 10px; text-shadow: 0 0 10px white;'>"
+                            + "Diseñador: Juan Antonio Cardona Ramirez<br>"
+                            + "Número telefónico: 3481016907<br>"
+                            + "Correo de contacto: Juan_antony-c@hotmail.com"
+                            + "</div>",
+                    onok: function () { alertify.success('Cerrado'); }
+                }).show();
+        }
+    </script>
+</body>
+</html>

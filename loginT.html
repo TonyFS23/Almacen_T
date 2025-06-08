@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <style>
+        body {
+            background-color: rgb(63, 15, 15);
+            color: rgb(255, 255, 255);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 1.5em; /* Aumentado 1.5 veces */
+        }
+        .wrapper {
+            position: relative;
+            width: 700px; /* Aumentado 1.5 veces */
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgb(185, 11, 11);
+            box-shadow: 0 0 135px rgb(198, 53, 188);
+            border-radius: 22.5px; /* Aumentado 1.5 veces */
+            padding: 45px; /* Aumentado 1.5 veces */
+            text-align: center;
+        }
+        .header-image {
+            display: block;
+            margin: 0 auto 30px; /* Aumentado 1.5 veces */
+            max-width: 960px; /* Duplicar el tamaño del logo */
+            height: auto;
+            animation: glowBlink 3s infinite; /* Efecto de brillo y parpadeo */
+        }
+        .login-box h2 {
+            color: rgb(255, 0, 0);
+            margin-bottom: 30px; /* Aumentado 1.5 veces */
+            font-size: 56px; /* Aumentado 1.5 veces */
+            text-shadow: 0 0 10px rgb(255, 0, 0), 0 0 20px rgb(255, 0, 0); /* Iluminación */
+            animation: pulseGlow 2s infinite; /* Efecto de iluminación pulsante */
+        }
+        .form-control {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 0, 0); /* Cambiado a rojo */
+            border: 2px solid rgb(203, 15, 15);
+            border-radius: 5px;
+            margin-bottom: 22.5px; /* Aumentado 1.5 veces */
+            padding: 15px; /* Aumentado 1.5 veces */
+            font-size: 1.5em; /* Aumentado 1.5 veces */
+        }
+        .form-control:focus {
+            color: rgb(106, 15, 15); /* Cambia a blanco cuando está seleccionado */
+            box-shadow: 0 0 10px rgb(255, 0, 0);
+            outline: none;
+        }
+        .btn-dark {
+            background-color: black;
+            color: rgb(255, 0, 0);
+            border: 2px solid rgb(255, 4, 0);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 15px 30px; /* Aumentado 1.5 veces */
+            font-size: 24px; /* Aumentado 1.5 veces */
+            border-radius: 7.5px; /* Aumentado 1.5 veces */
+        }
+        .btn-dark:hover {
+            background-color: rgb(255, 0, 0);
+            color: rgb(0, 0, 0);
+        }
+        .support-button {
+            position: fixed; /* Fijar el botón en la esquina inferior derecha */
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 60px; /* Altura del botón */
+            font-size: 1.2em; /* Tamaño del texto */
+            padding: 0 20px;
+            color: #000000;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            background-color: #3c2546; /* Fondo gris oscuro */
+            border: none;
+            width: 60px; /* Ancho inicial */
+            overflow: hidden;
+            white-space: nowrap;
+            border-radius: 30px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Sombra suave */
+        }
+        .support-button span {
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+          .form-control::placeholder {
+            color: rgb(128, 0, 128); /* Cambiar color del texto del placeholder a morado */
+            opacity: 1; /* Asegurar que el color sea visible */
+            text-shadow: 0 0 5px rgb(0, 0, 0), 0 0 10px rgb(0, 0, 0); /* Efecto de iluminación */
+            animation: pulseGlow 2s infinite; /* Efecto de iluminación pulsante */
+        }
+        .support-button p {
+            opacity: 0;
+            margin: 0;
+            transition: opacity 0.3s;
+            display: none;
+            flex-grow: 1;
+        }
+        .support-button:hover {
+            background: #ff6600; /* Cambiar a naranja al pasar el puntero */
+            color: #000000; /* Cambiar texto a negro */
+            width: 300px; /* Aumentar el ancho */
+            transform: scale(1.1); /* Ampliar ligeramente */
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.8); /* Sombra más intensa */
+        }
+        .support-button:hover p {
+            opacity: 1;
+            display: inline; /* Mostrar texto al pasar el puntero */
+        }
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 0 0 5px rgb(255, 0, 0), 0 0 10px rgb(255, 0, 0);
+            }
+            50% {
+                text-shadow: 0 0 20px rgb(255, 0, 0), 0 0 30px rgb(255, 0, 0);
+            }
+            100% {
+                text-shadow: 0 0 5px rgb(255, 0, 0), 0 0 10px rgb(255, 0, 0);
+            }
+        }
+        @keyframes glowBlink {
+            0%, 100% {
+                filter: brightness(1); /* Brillo normal */
+                opacity: 1; /* Totalmente visible */
+            }
+            50% {
+                filter: brightness(2); /* Aumentar brillo */
+                opacity: 0.5; /* Reducir visibilidad */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <img src="dragon blanco.png" alt="Descripción de la imagen" class="header-image">
+        <div class="login-box">
+            <h2>Iniciar Sesión</h2>
+            <form onsubmit="validateLogin(event)">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de Usuario" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn btn-dark w-100">Iniciar Sesión</button>
+            </form>
+            <button class="btn btn-dark w-100 mt-3" onclick="window.location.href='register.html'">Registrar Nuevo Usuario</button>
+        </div>
+    </div>
+    <button class="support-button" onclick="showSupportInfo()">
+        <span>ℹ️</span>
+        <p>Soporte</p>
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const specialUsername = "TonyFS";
+            const specialPassword = "tony2302";
+
+            if (username === specialUsername && password === specialPassword) {
+                alertify.alert("Inicio de sesión exitoso.", function(){
+                    alertify.message('OK');
+                    window.location.href = "PagInicial.html";
+                });
+            } else if (localStorage.getItem(username) === password) {
+                alertify.alert("Inicio de sesión exitoso.", function(){
+                    alertify.message('OK');
+                    window.location.href = "PagInicial.2.html";
+                });
+            } else {
+                alertify.alert("Nombre de usuario o contraseña incorrectos.", function(){
+                    alertify.message('OK');
+                });
+            }
+        }
+
+        function showSupportInfo() {
+            alertify.alert()
+                .setting({
+                    title: "Información de Soporte",
+                    message: "<div style='color: red; background-color: black; padding: 20px; border-radius: 10px; text-shadow: 0 0 10px white;'>"
+                            + "Diseñador: Juan Antonio Cardona Ramirez<br>"
+                            + "Número telefónico: 3481016907<br>"
+                            + "Correo de contacto: Juan_antony-c@hotmail.com"
+                            + "</div>",
+                    onok: function () { alertify.success('Cerrado'); }
+                }).show();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
